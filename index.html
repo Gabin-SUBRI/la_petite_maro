@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Petite Maro & Mademoiselle Jeanne - Maroquinerie de Luxe</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Georgia", serif;
+        line-height: 1.6;
+        color: #2c2c2c;
+        background: linear-gradient(135deg, #f5f2e9 0%, #e8e2d4 100%);
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #8b4513;
+        text-decoration: none;
+        font-family: "Playfair Display", serif;
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #2c2c2c;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #8b4513;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: #8b4513;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background-image: url("img/fond.avif");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(139, 69, 19, 0.1) 0%,
+          transparent 70%
+        );
+        animation: rotate 20s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .hero-content {
+        z-index: 2;
+        position: relative;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        animation: fadeInUp 1s ease-out 0.3s both;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(45deg, #8b4513, #a0522d);
+        color: white;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+        animation: fadeInUp 1s ease-out 0.6s both;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Instagram Feed Section */
+      .instagram-feed {
+        padding: 5rem 0;
+        background: white;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        color: #8b4513;
+        font-family: "Playfair Display", serif;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 3px;
+        background: #8b4513;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .instagram-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .instagram-post {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .instagram-post:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .post-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .platform-badge {
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .post-time {
+        color: #999;
+        font-size: 0.8rem;
+      }
+
+      .post-image {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(45deg, #8b4513, #a0522d);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .post-image::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4K");
+        opacity: 0.3;
+      }
+
+      .post-overlay {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 0.5rem;
+        border-radius: 10px;
+        font-size: 0.9rem;
+      }
+
+      .post-content {
+        padding: 1.5rem;
+      }
+
+      .post-brand {
+        font-size: 0.9rem;
+        color: #8b4513;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .post-description {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .post-hashtags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .hashtag {
+        background: #f0f0f0;
+        color: #8b4513;
+        padding: 0.2rem 0.6rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      /* Notifications */
+      .update-notification {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: white;
+        border-left: 4px solid #8b4513;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        opacity: 0;
+        transform: translateY(-100px);
+        transition: all 0.3s ease;
+      }
+
+      .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .notification-icon {
+        font-size: 1.5rem;
+      }
+
+      .demo-notification {
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-100px);
+        background: linear-gradient(45deg, #28a745, #20c997);
+        color: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        z-index: 1001;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .demo-notification-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .demo-icon {
+        font-size: 2rem;
+      }
+
+      /* Bouton démo */
+      .demo-button {
+        background: linear-gradient(45deg, #8b4513, #a0522d);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+        margin-left: 1rem;
+      }
+
+      .demo-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(139, 69, 19, 0.4);
+      }
+
+      /* Store Locations */
+      .stores {
+        padding: 5rem 0;
+        background: linear-gradient(135deg, #f9f7f4 0%, #f0ebe4 100%);
+      }
+
+      .stores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .store-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .store-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .store-image {
+        height: 250px;
+        background: linear-gradient(45deg, #8b4513, #a0522d);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .store-info {
+        padding: 2rem;
+      }
+
+      .store-name {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #8b4513;
+        font-family: "Playfair Display", serif;
+      }
+
+      .store-address {
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .store-link {
+        display: inline-block;
+        color: #8b4513;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .store-link:hover {
+        color: #a0522d;
+      }
+
+      /* Footer */
+      footer {
+        background: #2c2c2c;
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: #8b4513;
+        font-family: "Playfair Display", serif;
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #8b4513;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: #8b4513;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: #a0522d;
+        transform: translateY(-2px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .instagram-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stores-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Loading Animation */
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #8b4513;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Luxury touches */
+      .luxury-divider {
+        text-align: center;
+        margin: 3rem 0;
+        position: relative;
+      }
+
+      .luxury-divider::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #8b4513,
+          transparent
+        );
+      }
+
+      .luxury-divider span {
+        background: white;
+        padding: 0 2rem;
+        color: #8b4513;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .post-image img {
+        width: 100%;
+        max-height: 320px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .post-image:hover img {
+        transform: scale(1.03);
+        opacity: 0.95;
+      }
+
+      .store-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .store-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* ← ça centre l’image dans la hauteur ET largeur */
+        display: block;
+      }
+
+      .social-links img {
+        width: 28px;
+        height: 28px;
+        filter: brightness(0) invert(1); /* rend l'icône blanche, si image sombre */
+        transition: transform 0.3s ease;
+      }
+
+      .social-links img:hover {
+        transform: scale(1.1); /* petit effet au survol */
+      }
+      .dev-signature {
+        color: inherit;
+        text-decoration: none;
+        pointer-events: auto;
+      }
+
+      .dev-signature:hover {
+        text-decoration: none;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="container">
+        <a href="#" class="logo">La Petite Maro</a>
+        <ul class="nav-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#magasins">Magasins</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+      <div class="hero-content">
+        <h1>Maroquinerie de Luxe</h1>
+        <p>Découvrez l'élégance intemporelle de nos collections</p>
+        <a href="#collections" class="cta-button">Découvrir nos Collections</a>
+      </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram-feed" id="collections">
+      <div class="container">
+        <h2 class="section-title">Nos Dernières Collections</h2>
+        <div class="instagram-grid" id="instagram-grid">
+          <!-- Les posts Instagram/Facebook seront chargés ici dynamiquement -->
+        </div>
+
+        <div class="luxury-divider">
+          <span>✦ Suivez-nous sur les réseaux ✦</span>
+        </div>
+
+        <div style="text-align: center">
+          <a
+            href="https://www.instagram.com/lapetitemaro/?hl=fr"
+            target="_blank"
+            class="cta-button"
+          >
+            Voir plus sur Instagram
+          </a>
+          <button
+            id="live-demo-btn"
+            class="demo-button"
+            onclick="toggleLiveDemo()"
+          >
+            ▶️ Démo temps réel
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Store Locations -->
+    <section class="stores" id="magasins">
+      <div class="container">
+        <h2 class="section-title">Nos Magasins</h2>
+        <div class="stores-grid">
+          <div class="store-card">
+            <div class="store-image">
+              <img src="/img/petite_maro.png" alt="La Petite Maro" />
+            </div>
+            <div class="store-info">
+              <h3 class="store-name">La Petite Maro</h3>
+              <div class="store-address">
+                16 Av. Victor Hugo<br />
+                26000 Valence, France<br />
+                <br />
+                Horaires d'ouverture :<br />
+                Lun-Sam : 10h00 - 19h00<br />
+                Dim : Fermé
+              </div>
+              <a
+                href="https://maps.app.goo.gl/o68aZcnJJnVRbQ6x9"
+                target="_blank"
+                class="store-link"
+              >
+                📍 Voir sur la carte
+              </a>
+            </div>
+          </div>
+
+          <div class="store-card">
+            <div class="store-image">
+              <img
+                src="/img/mademoiselle_jeanne.png"
+                alt="Mademoiselle Jeanne"
+              />
+            </div>
+            <div class="store-info">
+              <h3 class="store-name">Mademoiselle Jeanne</h3>
+              <div class="store-address">
+                23 Rue Emile Augier<br />
+                26000 Valence, France<br />
+                <br />
+                Horaires d'ouverture :<br />
+                Lun-Sam : 10h00 - 19h00<br />
+                Dim : Fermé
+              </div>
+              <a
+                href="https://maps.app.goo.gl/7hDgDB65KuZE31uk8"
+                target="_blank"
+                class="store-link"
+              >
+                📍 Voir sur la carte
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>La Petite Maro</h3>
+            <p>Maroquinerie de luxe depuis 1985</p>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/lapetitemaro/?hl=fr"
+                target="_blank"
+                ><img src="/img/instagram.png" alt="Instagram"
+              /></a>
+              <a
+                href="https://www.facebook.com/lapetitemaro26/?locale=fr_FR"
+                target="_blank"
+                ><img src="/img/reseaux-sociaux.png" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Mademoiselle Jeanne</h3>
+            <p>Élégance et raffinement</p>
+            <div class="social-links">
+              <a href="#" target="_blank"
+                ><img src="/img/instagram.png" alt="Instagram"
+              /></a>
+              <a href="#" target="_blank"
+                ><img src="/img/reseaux-sociaux.png" alt="Facebook"
+              /></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: contact@lapetitemaro.fr</p>
+            <p>Téléphone: 04 75 44 38 66</p>
+          </div>
+        </div>
+        <div class="luxury-divider">
+          <span>✦ ✦ ✦</span>
+        </div>
+        <p>
+          &copy; 2025 La Petite Maro & Mademoiselle Jeanne. Tous droits
+          réservés. — Développé avec ❤️ par
+          <a
+            href="https://gabinsubri.com"
+            target="_blank"
+            rel="noopener"
+            class="dev-signature"
+          >
+            Gabin SUBRI
+          </a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(255, 255, 255, 0.98)";
+          header.style.boxShadow = "0 2px 30px rgba(0, 0, 0, 0.15)";
+        } else {
+          header.style.background = "rgba(255, 255, 255, 0.95)";
+          header.style.boxShadow = "0 2px 30px rgba(0, 0, 0, 0.1)";
+        }
+      });
+
+      // Simulation réaliste d'Instagram/Facebook feed
+      const mockSocialPosts = [
+        {
+          id: 1,
+          platform: "instagram",
+          brand: "La Petite Maro",
+          image: '<img src="/img/insta_1.jpg" alt="Jupe laureplusmax" />',
+          description: "Coup de ❤️ pour ces deux jupes de chez @laureplusmax !",
+          likes: 37,
+          timeAgo: "2 sem",
+          hashtags: ["#lapetitemaro", "#été2025", "#moncoeurvalence"],
+        },
+        {
+          id: 2,
+          platform: "facebook",
+          brand: "Mademoiselle Jeanne",
+          image: '<img src="/img/facebook_2.jpg" alt="Jupe laureplusmax" />',
+          description: "Coup de ❤️ pour ces deux jupes de chez @laureplusmax !",
+          likes: 3,
+          timeAgo: "1j",
+          hashtags: ["#éditionlimitée", "#exclusif", "#collector"],
+        },
+        {
+          id: 3,
+          platform: "instagram",
+          brand: "La Petite Maro",
+          image: '<img src="/img/insta_2.jpg" alt="Sac FOLK" />',
+          description:
+            "Les nouveautés de chez Paul Marius ! Découvrez la gamme FOLK ! 👜",
+          likes: 23,
+          timeAgo: "2 juillet",
+          hashtags: [
+            "#valence",
+            "#moncoeurvalence",
+            "#lapetitemaro",
+            "#sac",
+            "#nouveauté",
+          ],
+        },
+        {
+          id: 4,
+          platform: "facebook",
+          brand: "Mademoiselle Jeanne",
+          image: '<img src="/img/facebook_1.jpg" alt="Sac FOLK" />',
+          description:
+            "Les nouveautés de chez Paul Marius ! Découvrez la gamme FOLK ! 👜",
+          likes: 4,
+          timeAgo: "25 juin",
+          hashtags: [
+            "#valence",
+            "#moncoeurvalence",
+            "#lapetitemaro",
+            "#sac",
+            "#nouveauté",
+          ],
+        },
+        {
+          id: 5,
+          platform: "instagram",
+          brand: "La Petite Maro",
+          image: '<img src="/img/insta_3.jpg" alt="Soldes" />',
+          description:
+            "Venez profiter des -30% et -50% sur une grande sélection d’articles. À découvrir en boutique ! 🛍️",
+          likes: 18,
+          timeAgo: "2j",
+          hashtags: ["#valence", "#moncoeurvalence", "#lapetitemaro", "#solde"],
+        },
+        {
+          id: 6,
+          platform: "facebook",
+          brand: "Mademoiselle Jeanne",
+          image: '<img src="/img/facebook_3.jpg" alt="Soldes" />',
+          description:
+            "Venez profiter des -30% et -50% sur une grande sélection d’articles. À découvrir en boutique ! 🛍️",
+          likes: 8,
+          timeAgo: "3j",
+          hashtags: ["#valence", "#moncoeurvalence", "#lapetitemaro", "#solde"],
+        },
+      ];
+
+      let currentPostIndex = 4;
+      let isLiveDemo = false;
+
+      function createPostElement(post) {
+        const platformIcon = post.platform === "instagram" ? "📷" : "📘";
+        const platformColor =
+          post.platform === "instagram" ? "#E4405F" : "#1877F2";
+
+        return `
+                <div class="instagram-post" data-platform="${
+                  post.platform
+                }" style="opacity: 0; transform: translateY(20px);">
+                    <div class="post-header">
+                        <div class="platform-badge" style="background: ${platformColor};">
+                            ${platformIcon} ${
+          post.platform === "instagram" ? "Instagram" : "Facebook"
+        }
+                        </div>
+                        <div class="post-time">${post.timeAgo}</div>
+                    </div>
+                    <div class="post-image">
+                        <span>${post.image}</span>
+                        <div class="post-overlay">
+                            <div class="post-likes">❤️ ${post.likes}</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-brand">${post.brand}</div>
+                        <div class="post-description">${post.description}</div>
+                        <div class="post-hashtags">
+                            ${post.hashtags
+                              .map(
+                                (tag) => `<span class="hashtag">${tag}</span>`
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+                </div>
+            `;
+      }
+
+      function loadInstagramFeed() {
+        const grid = document.getElementById("instagram-grid");
+
+        // Vider le grid existant
+        grid.innerHTML = "";
+
+        // Charger les 4 premiers posts
+        const postsToShow = mockSocialPosts.slice(0, 4);
+
+        postsToShow.forEach((post, index) => {
+          const postElement = document.createElement("div");
+          postElement.innerHTML = createPostElement(post);
+          grid.appendChild(postElement.firstElementChild);
+
+          // Animation d'entrée
+          setTimeout(() => {
+            const postEl = grid.children[index];
+            postEl.style.transition = "all 0.6s ease";
+            postEl.style.opacity = "1";
+            postEl.style.transform = "translateY(0)";
+          }, index * 200);
+        });
+      }
+
+      function simulateRealTimeUpdate() {
+        const grid = document.getElementById("instagram-grid");
+        const posts = Array.from(grid.children);
+
+        if (posts.length > 0) {
+          // Supprimer le dernier post avec animation
+          const lastPost = posts[posts.length - 1];
+          lastPost.style.transform = "translateX(100%)";
+          lastPost.style.opacity = "0";
+
+          setTimeout(() => {
+            lastPost.remove();
+
+            // Ajouter un nouveau post en première position
+            const newPost =
+              mockSocialPosts[currentPostIndex % mockSocialPosts.length];
+            const postElement = document.createElement("div");
+            postElement.innerHTML = createPostElement(newPost);
+            const newPostEl = postElement.firstElementChild;
+
+            // Animation d'entrée depuis la gauche
+            newPostEl.style.transform = "translateX(-100%)";
+            newPostEl.style.opacity = "0";
+            grid.insertBefore(newPostEl, grid.firstChild);
+
+            setTimeout(() => {
+              newPostEl.style.transition = "all 0.8s ease";
+              newPostEl.style.transform = "translateX(0)";
+              newPostEl.style.opacity = "1";
+            }, 100);
+
+            currentPostIndex++;
+
+            // Notification de mise à jour
+            showUpdateNotification(newPost);
+          }, 500);
+        }
+      }
+
+      function showUpdateNotification(post) {
+        const notification = document.createElement("div");
+        notification.className = "update-notification";
+        notification.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-icon">🔔</span>
+                    <div>
+                        <strong>Nouveau post ${
+                          post.platform === "instagram"
+                            ? "Instagram"
+                            : "Facebook"
+                        }</strong>
+                        <div>${post.brand}</div>
+                    </div>
+                </div>
+            `;
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+          notification.style.opacity = "1";
+          notification.style.transform = "translateY(0)";
+        }, 100);
+
+        setTimeout(() => {
+          notification.style.opacity = "0";
+          notification.style.transform = "translateY(-100px)";
+          setTimeout(() => notification.remove(), 300);
+        }, 3000);
+      }
+
+      function toggleLiveDemo() {
+        const button = document.getElementById("live-demo-btn");
+
+        if (!isLiveDemo) {
+          isLiveDemo = true;
+          button.textContent = "⏸️ Arrêter la démo";
+          button.style.background = "#dc3545";
+
+          // Démarrer les mises à jour automatiques
+          demoInterval = setInterval(simulateRealTimeUpdate, 5000);
+
+          // Notification de démarrage
+          showDemoStartNotification();
+        } else {
+          isLiveDemo = false;
+          button.textContent = "▶️ Démo temps réel";
+          button.style.background = "linear-gradient(45deg, #8b4513, #a0522d)";
+
+          // Arrêter les mises à jour
+          clearInterval(demoInterval);
+        }
+      }
+
+      function showDemoStartNotification() {
+        const notification = document.createElement("div");
+        notification.className = "demo-notification";
+        notification.innerHTML = `
+                <div class="demo-notification-content">
+                    <span class="demo-icon">🚀</span>
+                    <div>
+                        <strong>Démo temps réel activée</strong>
+                        <div>Les posts vont se mettre à jour automatiquement</div>
+                    </div>
+                </div>
+            `;
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+          notification.style.opacity = "1";
+          notification.style.transform = "translateY(0)";
+        }, 100);
+
+        setTimeout(() => {
+          notification.style.opacity = "0";
+          notification.style.transform = "translateY(-100px)";
+          setTimeout(() => notification.remove(), 300);
+        }, 4000);
+      }
+
+      // Load Instagram feed when page loads
+      window.addEventListener("load", loadInstagramFeed);
+
+      let demoInterval;
+    </script>
+  </body>
+</html>
